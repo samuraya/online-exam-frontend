@@ -24,7 +24,7 @@
                 <v-text-field 
                 	@input="$v.profile.last_name.$touch()"
                 	v-model="profile.last_name"
-	                label="Legal middle name" 
+	                label="Last name*" 
 	                hint="example of helper text only on focus">
                 	
                 </v-text-field>
