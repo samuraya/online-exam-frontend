@@ -29,12 +29,9 @@
 		    			tabs: [
 			    			{
 			    				tabComponent: 'OverviewStudent',
-			    				tabText: 'Overview'
+			    				tabText: 'Active Exams'
 			    			},
-			    			{
-			    				tabComponent: 'Performance',
-			    				tabText: 'Performance'
-			    			}
+			    			
 			    		],
 		    		}
 		    	},
@@ -45,7 +42,7 @@
 		    			tabs: [
 			    			{
 			    				tabComponent: "OverviewTeacher",
-			    				tabText: "Overview"
+			    				tabText: "Active Exams"
 			    			},
 			    			{
 			    				tabComponent: "NewExam",

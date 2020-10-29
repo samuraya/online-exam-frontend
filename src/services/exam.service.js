@@ -214,7 +214,8 @@ const ExamService = function(){
 
 	//writes one subject fetches back all subjects.
 	var writeExam = async function (payload) {
-	    		    	    	
+	    		  
+	    		  console.log(payload);  	    	
 	    		//console.log('fetching exams from server')
 	    		await ApiService.post('/exam', payload)
 	    		.then((response)=>{
@@ -308,6 +309,17 @@ const ExamService = function(){
 	};
 
 
+	var deleteQuestion = async function(questionId) {
+		await ApiService.delete('/question/'+questionId)
+	    		.then((response)=>{
+	    								
+	    		})
+	    		.catch((error)=>{
+	    			return Promise.reject(error);
+	    		})
+	};
+
+
 	//writes one subject fetches back all subjects.
 	var closeExam = async function (examId) {	    		    	    	
 	    		console.log(examId)
@@ -346,6 +358,7 @@ const ExamService = function(){
 		writeQuestion,
 		writeAnswer,
 		deleteChoice,
+		deleteQuestion,
 		closeExam,
 		
 	};

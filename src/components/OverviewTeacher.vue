@@ -83,7 +83,7 @@
 
 		methods: {
 			selectExam: function(exam){
-				console.log(exam);
+				
 				this.selectedExam=exam['exam_id'];
 				this.subject = exam['subject_id'];				
 			},
@@ -97,7 +97,8 @@
 						name: this.exam['name'],
 					}})				
 			},
-			closeExam: function(){
+			closeExam: function(exam){
+								
 				this.ExamService.closeExam(this.selectedExam)
 				.then((response)=>{
 					console.log(response);
@@ -105,12 +106,17 @@
 				.catch(
 					(error)=>console.log(error)
 				);
+				let index = this.listOfExams.indexOf(exam);
+				this.listOfExams.splice(index,1);
+				this.selectedExam = false;
 				
 			}
 		},
 		computed: {
 			exams(){
+				
 				return this.listOfExams;
+
 			},
 		},
 		created(){

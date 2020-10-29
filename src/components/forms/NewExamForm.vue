@@ -308,24 +308,7 @@ export default {
     }
   },
   created() {
-    // let a = this.exam.exam_b || null;
-    // console.log(a);
-    // this.fields = [
-    //   {
-    //     component: QuestionInput,
-    //     name: 'question 1',
-    //     subComponent: {
-    //       component:ChoiceInput,
-    //       props: {
-    //         choices: [{            
-    //         }],
-    //         questionNumber: 'question 1',
-    //       }
-    //     },
-    //     validation: {          
-    //     },
-    //   },     
-    // ]
+    console.log(this.fields);
   }, 
 };
 </script>

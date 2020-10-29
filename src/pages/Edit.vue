@@ -40,7 +40,7 @@
 			this.user = this.UserService.retrieveState();
 			this.exam = exam;
 			this.subject.subject_id = exam.subject_id;
-			
+	console.log(questionChoices);		
 			let count = 1;
 			let currentQuestion = 'question '+count;
 			Object.entries(questionChoices).forEach(function(entry){

@@ -39,6 +39,7 @@
 			  </v-data-table>
 			
 		</v-card-text>
+		
 	</v-card>
 	<!-- table of one Student -->
 	<v-card v-if="tableStudent">
@@ -54,7 +55,10 @@
 			  </v-data-table>
 		</v-card-text>
 		<v-card-actions>
-			<v-btn color="#00897B" dark class="ml-4 mb-4">Back to all</v-btn>
+			<v-btn color="#00897B" 
+				dark class="ml-4 mb-4"
+				@click="loadTableAll($data['selectedExam'])"
+			>Back to all</v-btn>
 		</v-card-actions>
 		
 	</v-card>
@@ -96,8 +100,6 @@
 				selectedExam:false,	
 				selectedStudent:false,			
 				listOfExams:[],
-				// dataAllStudents:[{}],
-				// dataOneStudent:[{}],
 				dialog: false,
 				tableAll: false,
 				tableStudent: false,
@@ -115,8 +117,10 @@
 		},
 
 		methods: {
+			
 			loadTableAll: function(id){
 				//this.currentTable = this.dataAllStudents;
+				this.selectMenu=true;
 				this.selectedExam=id;
 				this.tableAll=true;
 				this.tableStudent=false;

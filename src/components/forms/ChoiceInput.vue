@@ -1,20 +1,32 @@
 <template>
   <div>
- 	<div v-for="(choice,index) in choices">
-		<input type="checkbox" :name="questionNumber" v-model="choice.status">
+ 	<div 
+ 		v-for="(choice,index) in choices">
+ 		
+		<input type="checkbox" 
+			true-value="1" false-value="0"
+			:name="questionNumber"
+			v-model="choice.is_correct" 
+			
+			>
+		<!-- {{choice.is_correct}}	 -->
 		<textarea type="text" name="answer" id="input-content"
 		placeholder="choice"
 		v-model="choice.content"></textarea>
-		<v-btn 
+		<!-- <v-btn 
 			class="mx-2" 
 			dark absolute 
 			right x-small
 			color="teal"
-		>
-	      <v-icon dark
-			v-on:click="deleteChoice(index)"
-	      >mdi-minus</v-icon>
-	    </v-btn>
+		> -->
+			<!-- <div class="icon-wrapper"> -->
+				<v-icon class="icon-wrapper"
+
+				v-on:click="deleteChoice(index)"
+		      >mdi-delete</v-icon>				
+			<!-- </div> -->
+		      
+	    <!-- </v-btn> -->
 	</div>
 	<button 
 		class="button is-primary is-small"
@@ -28,7 +40,7 @@
 		inject: ['ExamService'],
 		data(){
 			return {
-				
+				//checked:false
 			}
 		},
 		props:{
@@ -45,7 +57,7 @@
 		},
 		methods:{
 			addChoice(){
-				this.choices.push({status:'',content:''});
+				this.choices.push({is_correct:'',content:''});
 				
 			},
 			deleteChoice(index){
@@ -60,8 +72,14 @@
 					this.choices.splice(index, 1);
 				}
 				
-			}
+			},
+			
+			
 		},
+		
+		created() {
+			console.log(this.choices)
+		}
 				
 };
 </script>
@@ -73,4 +91,13 @@
 	#input-content {
 		width: 500px;
 	}
+	.icon-wrapper {
+      text-align: right
+
+    }
+    button.icon-wrapper {
+    	float: right;
+    	margin: 0 auto;
+    }
+  
 </style>

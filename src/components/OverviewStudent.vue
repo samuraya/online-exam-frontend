@@ -1,10 +1,6 @@
 <template>
-	
 	<v-container style="height: 1000px;">
-
-
-
-		 <v-card
+ <v-card
     max-width="500"
     class="mx-auto"
   >

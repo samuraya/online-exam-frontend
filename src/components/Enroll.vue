@@ -89,44 +89,33 @@
     </v-expansion-panel>
     
   </v-expansion-panels>	
-
-   <v-dialog
-      v-model="dialog"
-      max-width="290"
+ 
+    <DialogBox 
+      :dialog="dialog"
+      :headline="dialogContent.headline" 
+      :body="dialogContent.body"
     >
-      <v-card>
-        <v-card-title class="headline">The file must be CSV file</v-card-title>
 
-        <v-card-text>
-          Make sure columnA is filled with student IDs and columnB is filled with student names.
-          There must not be any headers and empty fields. 
-          Example of a first row: [111 | John Doe]                   
-
-        </v-card-text>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>         
-          <v-btn
+        <template slot="buttonConfirm">
+           <v-btn
             color="green darken-1"
             text
             @click="dialog = false"
-          >
-            I got It!
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-
-
-
-
+          >I got it</v-btn>
+          
+        </template>        
+    </DialogBox>
 
 
 	</v-container>
 </template>
 <script>
+  import DialogBox from './DialogBox.vue';
 	export default {
 		name: 'Enroll',
+    components: {
+      DialogBox,
+    },
 		inject: ['ExamService', 'EnrollService'],
 		data(){
 			return {
@@ -138,6 +127,11 @@
 				chosenFile: null,
 				formData: new FormData(),
         dialog: false,
+        dialogContent: {
+          headline: "",
+          body:"",
+
+        }
 			}
 		},
 
@@ -151,6 +145,8 @@
 			selectSubject: function(){
 				console.log(this.selected);
 				this.fileInput=true;
+        this.dialogContent.headline="The file must be CSV file";
+        this.dialogContent.body="Make sure columnA is filled with student IDs and columnB is filled with student names.There must not be any headers and empty fields. Example of a first row: [111 | John Doe]";
         this.dialog = true;
 			},
 
@@ -168,9 +164,18 @@
 					this.formData,
 					this.selected.subject_id
 				)
+        .then((response)=>{
+          this.dialogContent.headline="File Uploaded!";
+          this.dialogContent.body="Move on";
+          this.dialog=true;
+          this.cancelSelected();
+        })
 				.catch(
-					(error)=>console.log(error)
-				);
+					(error)=>{
+            this.dialogContent.headline="Failed to upload!";
+            this.dialogContent.body="There was an error in uploading";
+            this.dialog=true;
+        });
 			}
 		},
 		computed: {
