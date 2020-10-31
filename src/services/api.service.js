@@ -28,7 +28,7 @@ const ApiService = {
 
 		}
 		
-		//console.log(contentType);
+		console.log(contentType);
 		axios.defaults.
 			headers.common["Content-Type"] 
 			= contentType;

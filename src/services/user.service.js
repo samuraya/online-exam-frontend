@@ -41,7 +41,7 @@ const UserService = function(){
     };
 	var login = async function(credentials){  //public 
 			const errorHandler = {errorHandle: false};
-			ApiService.setHeader('application/x-www-form-urlencoded');
+			//ApiService.setHeader('application/x-www-form-urlencoded');
 			await ApiService.post('/login', credentials, errorHandler)
 				.then((response)=>{					
 					updateDetails(response.data.body.user);						
