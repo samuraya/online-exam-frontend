@@ -102,92 +102,86 @@ import NewExamForm from '../components/forms/NewExamForm.vue';
 import QuestionInput from './forms/QuestionInput.vue';
 import ChoiceInput from './forms/ChoiceInput.vue';
 
-
-
-	export default {
-		name: 'NewExam',
-		inject: ['ExamService'],
-		components: {			 
-			NewSubjectForm,			 
-			NewExamForm,
-
-			// QuestionInput,
-   //  		ChoiceInput, 
+export default {
+	name: 'NewExam',
+	inject: ['ExamService'],
+	components: {			 
+		NewSubjectForm,			 
+		NewExamForm,			
+	},
+	mixins: [validationMixin],
+	data: function () {
+		return {				
+			defaultText: 'Select subject',
+			selectedSubject:false,
+			isActive: false,
+			addNewSubjectForm:false,
+			addNewExamForm:false,				
+			createNewSubject: false,
+			listOfSubjects:'nothing',
+			fields:[],
 			
+		}
+	},
+	props: {
+		user: {
+			type: Object
 		},
-		mixins: [validationMixin],
-		data: function () {
-			return {				
-				defaultText: 'Select subject',
-				selectedSubject:false,
-				isActive: false,
-				addNewSubjectForm:false,
-				addNewExamForm:false,				
-				createNewSubject: false,
-				listOfSubjects:'nothing',
-				fields:[],
-				
-			}
+		exams: {
+			type: Array,
 		},
-		props: {
-			user: {
-				type: Object
-			},
-			exams: {
-				type: Array,
-			},
-			
+		
+	},
+	methods: {
+		selectSubject: function(subject){
+			console.log(subject);
+			this.selectedSubject={subject_id:subject.subject_id,name:subject.name};
+			this.defaultText=name;
+			this.isActive=false;			
+			this.addNewExamForm=true;
 		},
-		methods: {
-			selectSubject: function(subject){
-				console.log(subject);
-				this.selectedSubject={subject_id:subject.subject_id,name:subject.name};
-				this.defaultText=name;
-				this.isActive=false;			
-				this.addNewExamForm=true;
-			},
-			subjectAdded: function(subject){				
-				this.ExamService.fetchSubjects()
-					.then(()=>{
-						this.listOfSubjects = this.ExamService.retrieveSubjects();
-						this.addNewSubjectForm=false;
-				});
-			},			
-		},
-		computed: {
-			subjects(){
-				return this.listOfSubjects;
-			}
-		},
-		created(){
-			Promise.all([this.ExamService.fetchSubjects()])			
-				.then(()=>{					
+		subjectAdded: function(subject){				
+			this.ExamService.fetchSubjects()
+				.then(()=>{
 					this.listOfSubjects = this.ExamService.retrieveSubjects();
-				})
-				.catch(
-					()=>console.log('nothing came back')
-				);
+					this.addNewSubjectForm=false;
+			});
+		},			
+	},
+	computed: {
+		subjects(){
+			return this.listOfSubjects;
+		}
+	},
+	created(){
+		Promise.all([this.ExamService.fetchSubjects()])			
+			.then(()=>{					
+				this.listOfSubjects = this.ExamService.retrieveSubjects();
+			})
+			.catch(
+				()=>console.log('nothing came back')
+			);
 
 
-		    this.fields = [
-		      {
-		        component: QuestionInput,
-		        name: 'question 1',
-		        subComponent: {
-		          component:ChoiceInput,
-		          props: {
-		            choices: [{            
-		            }],
-		            questionNumber: 'question 1',
-		          }
-		        },
-		        validation: {          
-		        },
-		      }, 
-		    ]
+	    this.fields = [
+	      {
+	        component: QuestionInput,
+	        name: 'question 1',
+	        subComponent: {
+	          component:ChoiceInput,
+	          props: {
+	            choices: [{            
+	            }],
+	            questionNumber: 'question 1',
+	          }
+	        },
+	        validation: {          
+	        },
+	      }, 
+	    ]
 
-		},
-	};
+	},
+};
 </script>;
 
 <style>

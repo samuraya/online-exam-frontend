@@ -13,13 +13,7 @@
         Active Exams
       </v-toolbar-title>
 
-      <v-spacer></v-spacer>
-
-      
-          
-      
-
-     
+      <v-spacer></v-spacer>     
     </v-toolbar>
 
     <v-card-text>
@@ -51,8 +45,6 @@
           </v-btn>
         </v-card-actions>
 
-
-
     </v-card-text>
   </v-card>
 
@@ -80,9 +72,8 @@
 
 		methods: {
 			selectExam: function(id){
-//console.log(id);
-				this.selectedExam=id;
 				
+				this.selectedExam=id;				
 			},
 			start: function(){
 				if(!this.selectedExam){

@@ -9,8 +9,7 @@
                 <input type="radio" v-bind:name="choice.question_id" @input="selectChoice(choice.question_id,choice.id)">
                 </div>
             </div>
-        </div>
-       
+        </div>       
         <v-row justify="center">
             <v-dialog v-model="dialog" persistent max-width="290">
               <template v-slot:activator="{ on }">
@@ -27,15 +26,6 @@
               </v-card>
             </v-dialog>
         </v-row>
-
-
-
-
-
-
-
-
-
     </div>
 </template>
 
@@ -64,8 +54,7 @@ import ExamService from '../services/exam.service.js';
                 this.ExamService.writeAnswer(this.answers);
                 this.$eventBus.$emit(
                         'pageLoader',
-                        {name: 'welcome',
-                        
+                        {name: 'welcome',                        
                         });
             }
         },
@@ -76,8 +65,7 @@ import ExamService from '../services/exam.service.js';
                 return this.ExamService.retrieveQuestionsChoices();
             }
         },
-
-
+        
         created(){
             const questions ={};
             const temp = Object.values(this.questionsAnswers);
@@ -88,9 +76,6 @@ import ExamService from '../services/exam.service.js';
             this.questions = questions;
             console.log(questions);
         },
-
-
-
         // added modification
         beforeRouteEnter(to, from, next) {
             Promise.all([

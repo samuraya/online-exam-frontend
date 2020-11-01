@@ -43,7 +43,7 @@ module.exports = {
       }
     ]
   },
-  plugins: [ new BundleAnalyzerPlugin() ],
+  //plugins: [ new BundleAnalyzerPlugin() ],
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
@@ -81,13 +81,7 @@ module.exports = {
 
 if (process.env.NODE_ENV === 'production') {
 
-  // module.exports = {
-  //   baseUrl: '/index.html/'
-  // }
-
-
-
-  module.exports.devtool = '#source-map'
+   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({

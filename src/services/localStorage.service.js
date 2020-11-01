@@ -1,15 +1,9 @@
 const adapter = function(storageType){
-
 	this.storage = storageType;
-	//this.path = false;
-	
-
-
 		this.save = function (key,value) {
 			this.storage.save(key,value); //should be json object
 
 		};
-
 		this.read = function (key) {
 			return this.storage.read(key);
 		};
@@ -32,10 +26,6 @@ const adapter = function(storageType){
 			this.storage.setPath(url);
 		};
 };
-
-
-
-
 export const local = (function(){
 	
 	function save (key,value) {
@@ -72,8 +62,7 @@ export const local = (function(){
 	function readAll () {
 		//return localStorage;
 		return localStorage;
-	};
-	
+	};	
 
 	return {
 			save: save,

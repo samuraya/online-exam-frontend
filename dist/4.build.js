@@ -1,0 +1,2 @@
+webpackJsonp([4],{171:function(n,e,t){function r(n){t(516)}var o=t(11)(t(501),t(510),r,null,null);n.exports=o.exports},501:function(n,e,t){"use strict"},503:function(n,e,t){e=n.exports=t(17)(),e.push([n.i,"",""])},510:function(n,e){n.exports={render:function(){var n=this,e=n.$createElement;return(n._self._c||e)("h1",[n._v("Performance page")])},staticRenderFns:[]}},516:function(n,e,t){var r=t(503);"string"==typeof r&&(r=[[n.i,r,""]]),r.locals&&(n.exports=r.locals);t(18)("e2d35c5a",r,!0,{})}});
+//# sourceMappingURL=4.build.js.map

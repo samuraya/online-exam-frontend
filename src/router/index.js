@@ -1,15 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-
 import Home from '../pages/Home.vue';
 import Login from '../pages/Login.vue';
-
 import Welcome from '../pages/Welcome.vue';
 import Profile from '../pages/Profile.vue';
-
 import Exam from '../pages/Exam.vue';
 import Edit from '../pages/Edit.vue';
-
 import UserService from '../services/user.service';
 
 Vue.use(VueRouter);

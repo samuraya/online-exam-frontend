@@ -54,7 +54,7 @@ const ExamService = function(){
 	var retrieveChoices= function(){
 		return choices;
 	};
-//ready made multiple choice question by exam id
+	//ready made multiple choice question by exam id
 	var retrieveQuestionsChoices = function(){
 		return questionsChoices
 	}
@@ -133,81 +133,30 @@ const ExamService = function(){
 	    		})
 	    		.catch((error)=>{
 	    			return Promise.reject(error);
-	    		});
-	    	
-		/*
-	    	const localData = local.read('exams');
-
-	    	if(localData===null){
-	    		console.log('fetching from server')
-	    		await ApiService.get('/exams')
-	    		.then((response)=>{
-	    			saveLocaly('exams',response.data.body.exams);
-					updateExams(local.read('exams'));	
-	    		})
-	    		.catch((error)=>{
-	    			return Promise.reject(error);
-	    		})
-	    	} else {
-
-	    		console.log('fetching from localStorage',localData);
-	    		updateSubjects(local.read('exams'));	
-	    		return Promise.resolve();
-	    	}
-	    */
-	    	
+	    		});	    	
 	}; 
 
 	var fetchSubjects = async function () {
 	    	
 	    	
 		await ApiService.get('/subjects')
-	    		.then((response)=>{
-	    			//saveLocaly('subjects',response.data.body.exams);
-					setSubjects(response.data.body.subjects);
-					//console.log(response.data.body.subjects);
+	    		.then((response)=>{	    			
+					setSubjects(response.data.body.subjects);					
 	    		})
 	    		.catch((error)=>{
-	    			return Promise.reject(error);
-	    		})
-
-		/*
-	    	const localData = local.read('subjects');
-
-	    	if(localData===null){
-	    		console.log('fetching from server')
-	    		await ApiService.get('/subjects')
-	    		.then((response)=>{
-	    			saveLocaly('subjects',response.data.body.exams);
-					updateExams(local.read('subjects'));	
-	    		})
-	    		.catch((error)=>{
-	    			return Promise.reject(error);
-	    		})
-	    	} else {
-
-	    		console.log('fetching from localStorage',localData);
-	    		updateSubjects(local.read('subjects'));	
-	    		return Promise.resolve();
-	    	}
-	    */
+	    			return Promise.reject(error.response);
+	    		})		
 	}; 
 
 	var fetchQuestions = async function (examId) {
 	    	
 	    	
 		await ApiService.get('/exam/'+examId)
-	    		.then((response)=>{
-	    			//saveLocaly('subjects',response.data.body.exams);
-					// setQuestions(response.data.body.questions);
-					// setChoices(response.data.body.choices);
-					setQuestionsChoices(response.data.body.questions_choices)
-
-
-					//console.log(response.data.body.subjects);
+	    		.then((response)=>{	    			
+					setQuestionsChoices(response.data.body.questions_choices)					
 	    		})
 	    		.catch((error)=>{
-	    			return Promise.reject(error);
+	    			return Promise.reject(error.response);
 	    		})
 	    }
 
@@ -216,95 +165,58 @@ const ExamService = function(){
 	var writeExam = async function (payload) {
 	    		  
 	    		  console.log(payload);  	    	
-	    		//console.log('fetching exams from server')
+	    		
 	    		await ApiService.post('/exam', payload)
-	    		.then((response)=>{
-	    			
-	     			//saveLocaly('subject',response.data.body.subject);
-				setNewExam(response.data.body.exam);
-				//setNewSubject(response.data.body.subject);
-					//return response;
-				 
-					
+	    		.then((response)=>{	     			
+					setNewExam(response.data.body.exam);					
 	    		})
 	    		.catch((error)=>{
-	    			return Promise.reject(error);
+	    			return Promise.reject(error.response);
 	    		})
     	
 	}; 
-	var writeSubject = async function (payload) {
-	    		    	    	
-	    		//console.log('fetching exams from server')
+	var writeSubject = async function (payload) {	    		
 	    		await ApiService.post('/subject', payload)
-	    		.then((response)=>{
-	    			
-	     			//saveLocaly('subject',response.data.body.subject);
-					setNewSubject(response.data.body.subject);
-				//setNewSubject(response.data.body.subject);
-					//return response;
-				 
-					
+	    		.then((response)=>{	     			
+					setNewSubject(response.data.body.subject);					
 	    		})
 	    		.catch((error)=>{
-	    			return Promise.reject(error);
+	    			return Promise.reject(error.response);
 	    		})
     	
 	}; 
 
-	var writeQuestion = async function (payload) {
-	    		    	    	
-	    		//console.log('fetching exams from server')
+	var writeQuestion = async function (payload) {	    		    	    	
 	    		await ApiService.post('/question', payload)
-	    		.then((response)=>{
-	    			//console.log('new question came back',response.data);
-	     			//saveLocaly('subject',response.data.body.subject);
-					//setNewSubject(response.data.body.question);
-				setNewQuestions(response.data.body.questions);
-				setChoicesToNewQuestions(response.data.body.choices);
-					//return response;
-				 
-					
+	    		.then((response)=>{	    			
+					setNewQuestions(response.data.body.questions);
+					setChoicesToNewQuestions(response.data.body.choices);					
 	    		})
 	    		.catch((error)=>{
-	    			return Promise.reject(error);
+	    			return Promise.reject(error.response);
 	    		})
     	
 	}; 
 
-	var writeAnswer = async function (payload) {
-	    		    	    	
+	var writeAnswer = async function (payload) {	    		    	    	
 	    		//console.log('fetching exams from server')
 	    		await ApiService.post('/answer', payload)
-	    		.then((response)=>{
-	    			//console.log('new question came back',response.data);
-	     			//saveLocaly('subject',response.data.body.subject);
-					//setNewSubject(response.data.body.question);
-				// setNewQuestions(response.data.body.questions);
-				// setChoicesToNewQuestions(response.data.body.choices);
-					//return response;
-				 
+	    		.then((response)=>{ 
 					
 	    		})
 	    		.catch((error)=>{
-	    			return Promise.reject(error);
+	    			return Promise.reject(error.response);
 	    		})
     	
 	}; 
 
 	var deleteChoice = async function(choiceId) {
 		await ApiService.delete('/choice/'+choiceId)
-	    		.then((response)=>{
-	    			//console.log('new question came back',response.data);
-	     			//saveLocaly('subject',response.data.body.subject);
-					//setNewSubject(response.data.body.question);
-				// setNewQuestions(response.data.body.questions);
-				// setChoicesToNewQuestions(response.data.body.choices);
-					//return response;
-				 
+	    		.then((response)=>{			 
 					
 	    		})
 	    		.catch((error)=>{
-	    			return Promise.reject(error);
+	    			return Promise.reject(error.response);
 	    		})
 	};
 
@@ -315,30 +227,22 @@ const ExamService = function(){
 	    								
 	    		})
 	    		.catch((error)=>{
-	    			return Promise.reject(error);
+	    			return Promise.reject(error.response);
 	    		})
 	};
-
 
 	//writes one subject fetches back all subjects.
 	var closeExam = async function (examId) {	    		    	    	
 	    		console.log(examId)
 	    		await ApiService.update('/exam/'+examId)
 	    		.then((response)=>{	    			
-	   			//saveLocaly('subject',response.data.body.subject);
-				// setNewExam(response.data.body.exam);
-				// //setNewSubject(response.data.body.subject);
-				// 	//return response;		 
-					
+	   			
 	    		})
 	    		.catch((error)=>{
-	    			return Promise.reject(error);
+	    			return Promise.reject(error.response);
 	    		})
     	
 	}; 
-
-
-
 		 
 	return {
 		fetchExams,
@@ -362,9 +266,6 @@ const ExamService = function(){
 		closeExam,
 		
 	};
-
-
-
 
 }();
 export default ExamService;

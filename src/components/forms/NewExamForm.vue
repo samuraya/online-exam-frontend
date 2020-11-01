@@ -46,8 +46,7 @@
                 no-gutters
                 style="width: 100%"
               >
-                <!-- <v-col cols="6">Start date: {{ exam.datetime || 'Not set' }}</v-col> -->
-                <!-- <v-col cols="6">End date: {{ trip.end || 'Not set' }}</v-col> -->
+               
               </v-row>
             </v-fade-transition>
           </v-col>
@@ -162,9 +161,7 @@
   
 </v-container>
 </template>
-
-
-
+ 
 <script>
 import { validationMixin } from 'vuelidate';
 import { required } from 'vuelidate/lib/validators';
@@ -282,7 +279,7 @@ export default {
       })     
     },
     addNewQuestion: function(){
-      //const nextQuestion = this.questionNumber+1;
+      
       const nextQuestion = this.fields.length + 1;
       this.fields.push({
         component: QuestionInput,
@@ -304,7 +301,7 @@ export default {
           }
         }
       });
-      //this.questionNumber++;
+      
     }
   },
   created() {

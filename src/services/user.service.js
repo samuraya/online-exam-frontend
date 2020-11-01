@@ -41,7 +41,6 @@ const UserService = function(){
     };
 	var login = async function(credentials){  //public 
 			const errorHandler = {errorHandle: false};
-			//ApiService.setHeader('application/x-www-form-urlencoded');
 			await ApiService.post('/login', credentials, errorHandler)
 				.then((response)=>{					
 					updateDetails(response.data.body.user);						
@@ -63,7 +62,6 @@ const UserService = function(){
 	    };
 
 	var uploadAvatar = async function (payload) {
-	    	//alert('upload avatar')
 	    	ApiService.setHeader('multipart/form-data');
 	    	await ApiService.post('/profile/image', payload)
 	    		.then((response)=>{	 

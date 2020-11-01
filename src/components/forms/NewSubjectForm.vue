@@ -32,6 +32,12 @@
           </v-btn>
         </v-card-actions>
 
+        <ErrorMessage 
+          v-if="serverErrors"
+          v-bind:message="message"
+          v-on:closeAlert="resetErrors"    
+        ></ErrorMessage>
+
       </v-expansion-panel-content> 
   </v-expansion-panel>
 </template>
@@ -40,16 +46,21 @@
 import { required } from 'vuelidate/lib/validators';
 import { minLength, between, integer } from 'vuelidate/lib/validators';
 
+import FormInlineMessage from '../forms/FormInlineMessage.vue';
+import ErrorMessage from '../messages/ErrorMessage.vue';
+
 export default {
   name: 'NewSubjectForm',
   components: {  
-     
+    FormInlineMessage,
+    ErrorMessage,
   },
   inject: ['ExamService'],
   data(){
     return {
       errors: false,
       message: '',
+      serverErrors:false,
       subject: {
         id:'',
         name:'',
@@ -73,13 +84,19 @@ export default {
         this.$emit('subjectAdded');                        
         })
         .catch((error)=>{
-          console.log(error);
           this.message = [
-            error.response.status,
-            error.response.data.body.error
+            error.data.statusCode,
+            error.data.error.description
           ];
-          this.errors = true;
+          this.serverErrors = true;
+
+
         })
+    },
+
+    resetErrors(){
+      this.serverErrors = false;
+      this.message = '';
     }
   },
 };

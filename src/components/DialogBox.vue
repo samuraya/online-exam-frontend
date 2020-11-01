@@ -28,13 +28,7 @@
 			return {
 				
 			}
-		},
-
-		// props : {
-		// 	user: {
-		// 		type: Object
-		// 	},
-		// },
+		},		
 
 		methods: {
 			

@@ -6,12 +6,8 @@
       prominent
       border="left"
       dismissible
-      @input="close"
-
-      
-    
-    >
-           
+      @input="close" 
+    >           
       <p v-for="line in message">{{line}}</p>
 
     </v-alert>
@@ -22,8 +18,7 @@
 	export default {
         props: ['message','isActive'],
         data(){
-            return {
-               
+            return {               
             }
         },
         methods: {
@@ -36,11 +31,7 @@
           check(){
 
           }
-        }
-       
-
-
-
+        } 
 
   };
 

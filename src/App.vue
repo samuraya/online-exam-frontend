@@ -31,8 +31,7 @@
 <style>
     
     .container {
-       width: auto;
-       
+       width: auto;       
     }
 
     .flip-enter-active {

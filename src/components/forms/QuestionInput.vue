@@ -3,8 +3,7 @@
   	<v-expansion-panel
       v-for="(field, index) in fields"
       :key="field.name"
-    >
-       
+    >       
         <v-expansion-panel-header v-slot="{ open }">
 
           <v-row no-gutters>
@@ -15,12 +14,7 @@
         </v-expansion-panel-header>
 
         <v-expansion-panel-content>
-         <!-- <v-btn 
-            class="mx-2" 
-            dark absolute 
-            right x-small
-            color="teal"
-          > -->
+       
             <div class="icon-wrapper">
               <v-icon
               v-on:click="deleteQuestion(index)"
@@ -88,10 +82,7 @@ import ChoiceInput from './ChoiceInput.vue';
             this.fields.splice(index, 1);
           }
           
-        },
-
-
-
+        }, 
     },
 
     created() {

@@ -2,7 +2,6 @@ import ApiService from "./api.service";
 import { local } from "./localStorage.service";
 
 const ReportService = function(){
-
 	var tableAllStudents = [{
 		
 	}];
@@ -10,8 +9,6 @@ const ReportService = function(){
 	var tableOneStudent = [{
 		
 	}];
-
-
 	var retrieveTableOneStudent = function(){
 		return tableOneStudent;
 	}
@@ -19,22 +16,18 @@ const ReportService = function(){
 	var retrieveTableAllStudents = function(){
 		return tableAllStudents;
 	}
-
-
 	var setTableAllStudents = function(payload){
 		if(payload.length > 0){
 			tableAllStudents = payload;
 		}
 		
 	}
-
 	var setTableOneStudent = function(payload){
 		if(payload.length > 0){
 			tableOneStudent = payload;
 		}
 		
 	}
-
 	var fetchReportByExam = async function (id) {
 	    	
 	    	await ApiService.get('/report/exams/'+id)
@@ -45,7 +38,6 @@ const ReportService = function(){
 	    			return Promise.reject(error);
 	    		});
 	}
-
 	var fetchOneStudent = async function (examId,studentId) {
 	    	
 	    	await ApiService.get('/report/exams/'+examId+'/'+studentId)
@@ -65,10 +57,6 @@ const ReportService = function(){
 		retrieveTableOneStudent,
 
 
-	}    		
-
-
-
-
+	}   
 }();
 export default ReportService;

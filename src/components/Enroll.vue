@@ -53,7 +53,7 @@
            Upload Students List
 
             <br>
-            <!-- <a href="javascript:void(0)">Learn more</a> -->
+            
           </v-col>
         </v-row>
 

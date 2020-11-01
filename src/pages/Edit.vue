@@ -1,4 +1,4 @@
-<template>
+<template>	
 	
 	<NewExamForm
 			v-bind:user="user"

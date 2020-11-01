@@ -1,32 +1,18 @@
 <template>
   <div>
  	<div 
- 		v-for="(choice,index) in choices">
- 		
+ 		v-for="(choice,index) in choices"> 		
 		<input type="checkbox" 
 			true-value="1" false-value="0"
 			:name="questionNumber"
-			v-model="choice.is_correct" 
-			
+			v-model="choice.is_correct" 			
 			>
-		<!-- {{choice.is_correct}}	 -->
 		<textarea type="text" name="answer" id="input-content"
 		placeholder="choice"
-		v-model="choice.content"></textarea>
-		<!-- <v-btn 
-			class="mx-2" 
-			dark absolute 
-			right x-small
-			color="teal"
-		> -->
-			<!-- <div class="icon-wrapper"> -->
+		v-model="choice.content"></textarea>		
 				<v-icon class="icon-wrapper"
-
 				v-on:click="deleteChoice(index)"
-		      >mdi-delete</v-icon>				
-			<!-- </div> -->
-		      
-	    <!-- </v-btn> -->
+		      >mdi-delete</v-icon>    	    
 	</div>
 	<button 
 		class="button is-primary is-small"
@@ -39,8 +25,7 @@
 	export default {
 		inject: ['ExamService'],
 		data(){
-			return {
-				//checked:false
+			return {				
 			}
 		},
 		props:{
@@ -72,8 +57,7 @@
 					this.choices.splice(index, 1);
 				}
 				
-			},
-			
+			},		
 			
 		},
 		

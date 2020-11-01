@@ -104,8 +104,7 @@
 				tableAll: false,
 				tableStudent: false,
 				selectMenu: true,
-				currentTable:[{}],
-				
+				currentTable:[{}],			
 
 			}
 		},
@@ -119,7 +118,6 @@
 		methods: {
 			
 			loadTableAll: function(id){
-				//this.currentTable = this.dataAllStudents;
 				this.selectMenu=true;
 				this.selectedExam=id;
 				this.tableAll=true;
@@ -133,7 +131,6 @@
 				);
 			},
 			loadTableStudent: function(){
-				//this.currentTable = this.dataOneStudent;
 				this.selectMenu = false;
 				this.dialog = false;
 				this.tableAll = false;

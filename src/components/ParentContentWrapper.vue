@@ -74,9 +74,7 @@
 
 	        </v-card-actions>
 		</v-card>
-	</v-dialog>     
-
-	
+	</v-dialog>     	
 
  	<!-- navigation bar for Tabs  -->
 		<v-app-bar				  
@@ -87,15 +85,7 @@
 	      fade-img-on-scroll
 	      scroll-target="#scrolling-techniques-3"
 		  elevate-on-scroll		      
-		   src="/src/assets/images/sunset.jpg"
-		    >
-		      <template v-slot:img="{ props }">
-		          <v-img
-		            v-bind="props"
-		            gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
-		          ></v-img>
-		      </template>
-  
+		>
 		      <v-app-bar-nav-icon
 				v-on:click="drawer=!drawer"
 		      ></v-app-bar-nav-icon>
@@ -254,9 +244,7 @@ import AvatarForm from './forms/AvatarForm';
 				
 			},	
 			saveProfile(){
-				const profile = this.profile;
-
-				//this.formData.append("profile",profile);								
+				const profile = this.profile;								
 				
 				this.UserService.saveProfile(
 					profile
@@ -274,8 +262,7 @@ import AvatarForm from './forms/AvatarForm';
 				this.UserService.logout()
 				.then(()=>location.replace("/login"));
 			},
-
-			
+		
 					
 		},
 		computed: {
