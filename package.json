@@ -1,0 +1,12 @@
+{
+  "name": "exam-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Vue.js project",
+  "author": "Anvar Variskhanov",
+  "scripts": {
+    "dev": "node build/dev-server.js",
+    "build": "node build/build.js",
+    "start": "node server.js",
+  }
+}

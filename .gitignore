@@ -88,7 +88,7 @@ Thumbs.db
 #development files
 src/
 package-lock.json
-package.json
+package.json.copy
 webpack.config.js
 .babelrc
 tests/
