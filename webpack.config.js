@@ -1,7 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; 
-require("babel-polyfill");
 
 
 module.exports = {

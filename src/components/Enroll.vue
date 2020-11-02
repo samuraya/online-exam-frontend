@@ -106,7 +106,7 @@
         </template>        
     </DialogBox>
 
-
+  <v-divider></v-divider>
 	</v-container>
 </template>
 <script>
