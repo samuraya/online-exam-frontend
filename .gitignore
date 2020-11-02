@@ -82,3 +82,13 @@ yarn-debug.log*
 .Trashes
 thumbs.db
 Thumbs.db
+
+
+
+#development files
+src/
+package-lock.json
+package.json
+webpack.config.js
+.babelrc
+tests/
