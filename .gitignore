@@ -1,6 +1,6 @@
 .DS_Store
 node_modules/
-#dist/
+dist/
 npm-debug.log*
 yarn-error.log*
 yarn-debug.log*
@@ -86,9 +86,9 @@ Thumbs.db
 
 
 #development files
-src/
+#src/
 package-lock.json
 package.json.copy
-webpack.config.js
-.babelrc
-tests/
+#webpack.config.js
+#.babelrc
+#tests/
