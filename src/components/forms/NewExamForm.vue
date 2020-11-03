@@ -106,6 +106,11 @@
     
     
   </v-expansion-panels>
+  <ErrorMessage 
+    v-if="serverErrors"
+    v-bind:message="message"
+    v-on:closeAlert="resetErrors"    
+  ></ErrorMessage>
   <v-row align="center">
     <v-col class="text-center" cols="12" sm="6">
       <v-btn
@@ -168,7 +173,7 @@ import { required } from 'vuelidate/lib/validators';
 import { minLength, between, integer } from 'vuelidate/lib/validators';
 import QuestionInput from './QuestionInput.vue';
 import ChoiceInput from './ChoiceInput.vue';
-
+import ErrorMessage from '../messages/ErrorMessage.vue';
 import FormInlineMessage from '../forms/FormInlineMessage.vue';
 
 export default {
@@ -176,13 +181,15 @@ export default {
   components: {
     QuestionInput,
     ChoiceInput,
-    FormInlineMessage  
+    FormInlineMessage,
+    ErrorMessage  
   },
   mixins: [validationMixin],
   inject: ['ExamService'],
   data(){
     return {
       errors: false,
+      serverErrors: false,
       message: '',
       // questionNumber:1,
       questions:[{        
@@ -263,19 +270,19 @@ export default {
           });  
           console.log(questions);
           this.ExamService.writeQuestion(questions);
-         
-          if(this.modeEdit) this.$eventBus.$emit('pageLoader', {name:"welcome"});
-          else location.replace("/welcome");      
+                  
+          location.replace("/welcome");      
 
                      
       })
       .catch((error)=>{
         console.log(error);
         this.message = [
-          error.response.status,
-          error.response.data.body.error
+            error.data.statusCode,
+            error.data.error.description
         ];
-        this.errors = true;
+        this.serverErrors = true;
+        this.dialogSubmitExam=false;
       })     
     },
     addNewQuestion: function(){
@@ -302,6 +309,10 @@ export default {
         }
       });
       
+    },
+    resetErrors(){
+      this.serverErrors = false;
+      this.message = '';
     }
   },
   created() {

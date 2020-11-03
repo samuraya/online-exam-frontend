@@ -1,6 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; 
+const CopyPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -43,9 +44,14 @@ module.exports = {
     ]
   },
   //plugins: [ new BundleAnalyzerPlugin() ],
+  plugins: [
+    new CopyPlugin([{ from: './src/assets', to: '../assets' }])
+    
+  ],
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+
     },
     extensions: ['*', '.js', '.vue', '.json']
   },

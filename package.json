@@ -7,7 +7,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "test:unit": "vue-cli-service test:unit",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --hot",
     "start": "node server.js"
   },
   "dependencies": {
@@ -34,6 +34,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.5.1",
     "bulma": "^0.8.2",
+    "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",

@@ -45,7 +45,7 @@
 			          <v-btn
 			            text
 			            color="secondary"
-			            @click="selectedExam=false"
+			            @click="cancelAll"
 			          >
 			            Cancel
 			          </v-btn>
@@ -61,13 +61,25 @@
 		    </v-card-text>
 	  	</v-card>
 	  	<v-divider></v-divider>
+
+	  	<Edit 
+	  		v-if="isEdit"
+	  		v-bind:exam="exam"
+	  	>
+	  		
+	  	</Edit>
+
 	</v-container>
 	
 </template>
 <script>
+	import Edit from '../pages/Edit.vue';
 	export default {
 		name: 'OverviewTeacher',
 		inject: ['ExamService'],
+		components: {
+			Edit,
+		},
 		data(){
 			return {
 				defaultText: 'Select a test',
@@ -75,6 +87,7 @@
 				listOfExams:[],
 				exam:{},
 				subject:'',
+				isEdit: false,
 			}
 		},
 		props : {
@@ -90,14 +103,7 @@
 				this.subject = exam['subject_id'];				
 			},
 			edit: function(){
-				this.$eventBus.$emit(
-					'pageLoader',
-					{name: 'editExam',
-					params: {
-						examId: this.exam['exam_id'],
-						subjectId: this.exam['subject_id'],
-						name: this.exam['name'],
-					}})				
+				this.isEdit=true;						
 			},
 			closeExam: function(exam){
 								
@@ -112,13 +118,15 @@
 				this.listOfExams.splice(index,1);
 				this.selectedExam = false;
 				
+			},
+			cancelAll: function(){
+				this.selectedExam=false;
+				this.isEdit=false;
 			}
 		},
 		computed: {
-			exams(){
-				
+			exams(){				
 				return this.listOfExams;
-
 			},
 		},
 		created(){

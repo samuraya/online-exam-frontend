@@ -84,8 +84,17 @@
 	      prominent      
 	      fade-img-on-scroll
 	      scroll-target="#scrolling-techniques-3"
+	      src="assets/images/mfu2.jpg"
 		  elevate-on-scroll		      
 		>
+		      <template v-slot:img="{ props }">
+		        <v-img
+		          v-bind="props"
+		          gradient="to top right, rgba(19,84,122,.1), rgba(128,208,199,.3)"
+		        ></v-img>
+		      </template>
+
+
 		      <v-app-bar-nav-icon
 				v-on:click="drawer=!drawer"
 		      ></v-app-bar-nav-icon>
