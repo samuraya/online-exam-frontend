@@ -24,4 +24,4 @@ Production mode:
 6) please provide backend api url in dotenv file 
 
 Backend API
-backend application is given in a separate repository "online-exam-backend"
+Application is given in a separate repository "online-exam-backend"
