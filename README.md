@@ -22,3 +22,6 @@ Production mode:
 4) node server will serve index.html on localhost:5000
 5) the vue js application will be server from dist/ folder 
 6) please provide backend api url in dotenv file 
+
+Backend API
+backend application is given in a separate repository "online-exam-backend"
