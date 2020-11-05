@@ -134,6 +134,8 @@ export default {
         })      
     },
     loginUser(user){
+      this.$v.$touch();
+      if (this.$v.$error) return;   
       this.UserService.login({user_id:this.user_id, password: this.password})
       .then((response)=>{
           this.$eventBus.$emit('pageLoader', {name: 'welcome'});        
