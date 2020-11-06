@@ -83,7 +83,8 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {  	
     Promise.all([UserService.fetchAuth()])
       .then(next)
-      .catch((error)=>{        
+      .catch((error)=>{
+      	router.push('login')      
         return;        
       })   
 
