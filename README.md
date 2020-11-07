@@ -25,3 +25,5 @@ Production mode:
 
 Backend API
 Application is given in a separate repository "online-exam-backend"
+
+recommended: run "npm run build" after downloading this repo so all important image assets are copied to assets directory from the src folder.
